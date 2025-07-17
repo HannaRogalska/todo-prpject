@@ -1,17 +1,21 @@
-import type { Todo } from './../types/Todo.ts';
-
+import type { Todo } from "./../types/Todo.ts";
+import TodoItem from "./TodoItem.tsx";
 interface TodoListProps {
-    todos: Todo[];
+  todos: Todo[];
+  setTodos: (todos: Todo[]) => void;
 }
 
-const TodoList = ({ todos }: TodoListProps) => {
-    return (
-      <ol>
-        {todos.map((todo: Todo) => (
-          <li key={todo.id}>{todo.title}</li>
-        ))}
-      </ol>
-    );
+const TodoList = ({ todos, setTodos }: TodoListProps) => {
+   if (todos.length === 0) {
+     return <p>No todos available</p>;
+   }
+  return (
+    <ol>
+      {todos.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} setTodos={setTodos} todos={todos} />
+      ))}
+    </ol>
+  );
 };
 
-export default TodoList
+export default TodoList;

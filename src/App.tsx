@@ -18,8 +18,8 @@ function App() {
       }
       const data: Todo[] = await res.json()
       setTodos(data);
-    } catch(Error) {
-      console.error("Failed to fetch todos:", Error);
+    } catch(error) {
+      console.error("Failed to fetch todos:", error);
     }
   }
   useEffect(() => {
@@ -29,7 +29,7 @@ function App() {
   
   return (
     <>
-      <TodoList todos={todos} />
+      <TodoList  todos={todos} setTodos={setTodos} />
       <InputForm todos={todos} setTodos={setTodos} />
     </>
   );
