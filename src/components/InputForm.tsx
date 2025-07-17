@@ -1,7 +1,6 @@
 import { type ChangeEvent, type JSX } from 'react'
 import { useState } from 'react';
 import type { Todo } from "./../types/Todo.ts";
-import type { Dispatch, SetStateAction } from "react";
 
 
 interface InputFormProps {
@@ -26,7 +25,6 @@ const InputForm = ({ todos, setTodos }: InputFormProps): JSX.Element => {
       completed: false,
     };
     const updatedTodos = [...todos, newTodo];
-    console.log("Adding new todo:", updatedTodos);
     setTodos(updatedTodos);
     setInputValue(""); 
   };
