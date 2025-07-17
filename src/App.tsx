@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { Todo } from './types/Todo.ts'
-
 import './App.css'
+import InputForm from './components/InputForm.tsx'
 
 
 function App() {
@@ -23,16 +23,17 @@ function App() {
   }
   useEffect(() => {
     fetchTodos();
-   },[])
+  }, []);
+
   
   return (
     <>
       <ol>
         {todos.map((todo: Todo) => (
-            <li key={todo.id}>{todo.title}</li>
-          
+          <li key={todo.id}>{todo.title}</li>
         ))}
       </ol>
+      <InputForm todos={todos} setTodos={setTodos} />
     </>
   );
 }
